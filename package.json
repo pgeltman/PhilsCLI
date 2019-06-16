@@ -1,6 +1,6 @@
 {
   "name": "philscli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple CLI style app for node",
   "main": "index.js",
   "scripts": {

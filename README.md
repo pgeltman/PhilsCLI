@@ -59,7 +59,11 @@ They are more expressive than a simple `console.log('foo')`
 This is the generic way to talk to users. We format the text with a `>>>` to show that it's coming from the CLI. This helps the user to differentiate generic console output from the comments from the CLI application.
 
 ```
-cli.respond('foo')
+cli.respond('Hello friendo.')
+```
+
+```
+>>> Hello friendo.
 ```
 
 Seems pretty simple, no?
@@ -71,7 +75,14 @@ We also offer some other response types:
 Titles are used for large section headings in your app. In fact, when you first launch your app, a title is used to annount it.
 
 ```
-cli.title('foo')
+cli.title('Star Trek: The Next Generation')
+```
+
+```
+====================================
+|| STAR TREK: THE NEXT GENERATION ||
+====================================
+
 ```
 
 ## Line
@@ -82,10 +93,18 @@ Lines are used to create a solid line of `n` length.
 cli.line(20)
 ```
 
+```
+=====================
+```
+
 ## Yell
 
 This will respond back in all capitals.
 
 ```
 cli.yell('you are fired')
+```
+
+```
+YOU ARE FIRED
 ```

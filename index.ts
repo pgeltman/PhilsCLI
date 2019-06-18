@@ -1,9 +1,10 @@
 import chalk from 'chalk';
+var prettyjson = require('prettyjson');
 
 class PhilsCLI {
   commands: object = {};
 
-  start(toolName: string) {
+  start(name: string) {
     console.log('\n\n\n');
 
     this.commands['help'] = () => {
@@ -11,7 +12,7 @@ class PhilsCLI {
       this.respond('available commands are: ' + keys);
     };
 
-    this.title(toolName);
+    this.title(name);
     process.openStdin().addListener('data', d => {
       let input = d
         .toString()
@@ -22,13 +23,14 @@ class PhilsCLI {
       try {
         let com = this.commands[command](params);
       } catch (err) {
-        this.respond(`I have no clue what '${command}' means...`);
+        this.error(`I have no clue what '${command}' means...`);
+        console.log(err);
         this.respond("type 'help' for a list of commands");
       }
     });
   }
 
-  addCommand(title, command) {
+  addCommand(title: string, command) {
     this.commands[title] = command;
   }
 
@@ -36,6 +38,22 @@ class PhilsCLI {
 
   respond(res) {
     console.log(chalk.cyan('> ' + res));
+  }
+
+  warn(res) {
+    console.log(chalk.yellow('> ' + res));
+  }
+
+  error(res) {
+    console.log(chalk.red('> ' + res));
+  }
+
+  congrats(res) {
+    console.log(chalk.green('> ' + res));
+  }
+
+  json(res) {
+    console.log(prettyjson.render(res));
   }
 
   title(res) {

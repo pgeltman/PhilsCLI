@@ -1,6 +1,6 @@
 {
   "name": "philscli",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "A simple CLI style app for node",
   "main": "index.js",
   "scripts": {
@@ -23,6 +23,7 @@
   "homepage": "https://github.com/pgeltman/PhilsCLI#readme",
   "dependencies": {
     "@types/node": "^12.0.8",
-    "chalk": "^2.4.2"
+    "chalk": "^2.4.2",
+    "prettyjson": "^1.2.1"
   }
 }

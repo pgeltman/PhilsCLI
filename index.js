@@ -1,18 +1,19 @@
 "use strict";
 exports.__esModule = true;
 var chalk_1 = require("chalk");
+var prettyjson = require('prettyjson');
 var PhilsCLI = /** @class */ (function () {
     function PhilsCLI() {
         this.commands = {};
     }
-    PhilsCLI.prototype.start = function (toolName) {
+    PhilsCLI.prototype.start = function (name) {
         var _this = this;
         console.log('\n\n\n');
         this.commands['help'] = function () {
             var keys = Object.keys(_this.commands);
             _this.respond('available commands are: ' + keys);
         };
-        this.title(toolName);
+        this.title(name);
         process.openStdin().addListener('data', function (d) {
             var input = d
                 .toString()
@@ -24,7 +25,8 @@ var PhilsCLI = /** @class */ (function () {
                 var com = _this.commands[command](params);
             }
             catch (err) {
-                _this.respond("I have no clue what '" + command + "' means...");
+                _this.error("I have no clue what '" + command + "' means...");
+                console.log(err);
                 _this.respond("type 'help' for a list of commands");
             }
         });
@@ -35,6 +37,18 @@ var PhilsCLI = /** @class */ (function () {
     //FORMATTING + RESPONSES
     PhilsCLI.prototype.respond = function (res) {
         console.log(chalk_1["default"].cyan('> ' + res));
+    };
+    PhilsCLI.prototype.warn = function (res) {
+        console.log(chalk_1["default"].yellow('> ' + res));
+    };
+    PhilsCLI.prototype.error = function (res) {
+        console.log(chalk_1["default"].red('> ' + res));
+    };
+    PhilsCLI.prototype.congrats = function (res) {
+        console.log(chalk_1["default"].green('> ' + res));
+    };
+    PhilsCLI.prototype.json = function (res) {
+        console.log(prettyjson.render(res));
     };
     PhilsCLI.prototype.title = function (res) {
         this.line(res.length);

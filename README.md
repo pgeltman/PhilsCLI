@@ -58,9 +58,13 @@ They are more expressive than a simple `console.log('foo')`
 
 This is the generic way to talk to users. We format the text with a `>>>` to show that it's coming from the CLI. This helps the user to differentiate generic console output from the comments from the CLI application.
 
+**Code**
+
 ```
 cli.respond('Hello friendo.')
 ```
+
+**Output**
 
 ```
 >>> Hello friendo.
@@ -70,13 +74,21 @@ Seems pretty simple, no?
 
 We also offer some other response types:
 
+## Congrats, Warn, Error
+
+In addition to `cli.respond()`, we also off `cli.congrats()`, `cli.warn()`, and `cli.error()` which change the font color to green, yellow, or red (respectively)
+
 ## Titles
 
 Titles are used for large section headings in your app. In fact, when you first launch your app, a title is used to annount it.
 
+**Code**
+
 ```
 cli.title('Star Trek: The Next Generation')
 ```
+
+**Output**
 
 ```
 ====================================
@@ -89,9 +101,13 @@ cli.title('Star Trek: The Next Generation')
 
 Lines are used to create a solid line of `n` length.
 
+**Code**
+
 ```
 cli.line(20)
 ```
+
+**Output**
 
 ```
 =====================
@@ -101,10 +117,32 @@ cli.line(20)
 
 This will respond back in all capitals.
 
+**Code**
+
 ```
 cli.yell('you are fired')
 ```
 
+**Output**
+
 ```
 YOU ARE FIRED
+```
+
+## json
+
+Phil's CLI support json prettification.
+
+**Code**
+
+```
+cli.json({love_from_me: "none", side_of_best_friends_ride: true, scrub: true})
+```
+
+**Output**
+
+```
+love_from_me:              none
+side_of_best_friends_ride: true
+scrub:                     true
 ```
